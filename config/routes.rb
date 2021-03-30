@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   namespace :api do 
     get "/api_test", to:"static#api_test"
+    get "properties", to: "properties#index"
   end
 end
