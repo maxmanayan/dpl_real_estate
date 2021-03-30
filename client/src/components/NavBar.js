@@ -44,7 +44,12 @@ const NavBar = (props) => {
           Home
         </Menu.Item>
       </Link>
-      <Link to='/about'>
+      <Link to='/available'>
+        <Menu.Item active={pathname == '/available'}>
+          Available
+        </Menu.Item>
+      </Link>
+      {/* <Link to='/about'>
         <Menu.Item active={pathname == '/about'}>
           About
         </Menu.Item>
@@ -54,7 +59,7 @@ const NavBar = (props) => {
           Component Demo
         </Menu.Item>
       </Link>
-      {getRightMenu()}
+      {getRightMenu()} */}
     </Menu>
   )
 }
