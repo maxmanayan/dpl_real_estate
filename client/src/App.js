@@ -8,6 +8,7 @@ import ComponentDemo from './pages/ComponentDemo';
 import NoMatch from './components/NoMatch';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Available from './pages/Available';
 
 function App() {
   return (
@@ -16,10 +17,11 @@ function App() {
       <Container>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/about' component={About} />
+          {/* <Route exact path='/about' component={About} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
-          <Route exact path='/componentDemo' component={ComponentDemo} />
+          <Route exact path='/componentDemo' component={ComponentDemo} /> */}
+          <Route exact path='/available' component={Available} />
           <Route component={NoMatch} />
         </Switch>
       </Container>
