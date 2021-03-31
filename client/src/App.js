@@ -9,6 +9,7 @@ import NoMatch from './components/NoMatch';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Available from './pages/Available';
+import Cities from './pages/Cities';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/componentDemo' component={ComponentDemo} /> */}
           <Route exact path='/available' component={Available} />
+          <Route exact path='/cities' component={Cities} />
           <Route component={NoMatch} />
         </Switch>
       </Container>
