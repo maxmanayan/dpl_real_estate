@@ -2,10 +2,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Dropdown, Header } from 'semantic-ui-react';
 import Card from '../components/Card';
+import Loader from '../components/Loader';
 
 
 const Cities = () => {
   const [cities, setCities] = useState(null)
+  const [properties, setProperties] = useState(null)
 
   useEffect(()=>{
     getCities()
@@ -27,9 +29,20 @@ const Cities = () => {
     }
   }
 
+  const getProperties = async (city) => {
+    try {
+      let res = await axios.get(`/api/cities/${city}`)
+      setProperties(res.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   const handleChange = (e, {name, value}) => {
     console.log(name)
     console.log(value)
+    getProperties(value)
+
   }
 
   // const DropdownExampleInline = () => (
@@ -43,7 +56,8 @@ const Cities = () => {
   //   </span>
   // )
   
-
+  if(!cities) return <Loader type='clock' text='loading please wait...' color='slateblue'/>
+  // if(!properties) return <Loader type='clock' text='loading please wait...' color='slateblue'/>
   return(
     <Card>
       <Header as='h1' textAlign='center'>Cities</Header>
@@ -56,6 +70,7 @@ const Cities = () => {
           options={cities}
         />
       </span>
+      <pre>{JSON.stringify(properties, null, 2)}</pre>
     </Card>
 
   )
