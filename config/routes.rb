@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   namespace :api do 
     get "/api_test", to:"static#api_test"
     get "properties", to: "properties#index"
+    get "cities/list", to: "properties#city_list"
+    get "cities/:city", to: "properties#city"
   end
 end

@@ -18,4 +18,16 @@ class Property < ApplicationRecord
     .where('p.sold = FALSE')
     .order('a.id')
   end
+
+
+  # SELECT p.price, p.beds, p.baths, p.sq_ft, a.street, a.city, a.zip
+  # FROM properties AS p
+  # INNER JOIN addresses AS a ON p.id = a.property_id
+  # WHERE LOWER(a.city) = 'sandy' AND p.sold = FALSE
+  def self.by_city (city)
+    select('p.price, p.beds, p.baths, p.sq_ft, a.street, a.city, a.zip')
+    .from('properties AS p')
+    .joins('INNER JOIN addresses AS a ON p.id = a.property_id')
+    .where('LOWER(a.city) = ? AND p.sold = FALSE', city.downcase)
+  end
 end
