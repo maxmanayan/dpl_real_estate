@@ -57,10 +57,10 @@ const Cities = () => {
   // )
   
   if(!cities) return <Loader type='clock' text='loading please wait...' color='slateblue'/>
-  // if(!properties) return <Loader type='clock' text='loading please wait...' color='slateblue'/>
+  // if(properties === null) return <Loader type='clock' text='loading please wait...' color='slateblue'/>
   return(
-    <Card>
-      <Header as='h1' textAlign='center'>Cities</Header>
+    <div>
+      <Header as='h1' textAlign='center' style={{color: 'white'}}>Cities</Header>
       <span>
         <Dropdown
            onChange={handleChange}
@@ -70,8 +70,9 @@ const Cities = () => {
           options={cities}
         />
       </span>
-      <pre>{JSON.stringify(properties, null, 2)}</pre>
-    </Card>
+      <br />
+      {properties === null ? <Loader type='bounce' text='please select a city' color='white'/> : <pre>{JSON.stringify(properties, null, 2)}</pre>}
+    </div>
 
   )
 }
