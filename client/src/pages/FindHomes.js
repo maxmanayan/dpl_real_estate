@@ -17,7 +17,7 @@ const FindHomes = () => {
 
   const agentOptions = (data) => {
     return data.map( agent => {
-      return {key: agent.id, value: agent.id, text: `${agent.first_name} ${agent.last_name} (${agent.frequency} buyers)`}
+      return {key: agent.id, value: agent.id, text: `${agent.first_name} ${agent.last_name}`}
     })
   }
 

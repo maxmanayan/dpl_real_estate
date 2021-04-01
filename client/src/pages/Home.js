@@ -33,7 +33,7 @@ const Home = () => {
     <div>
       {/* <h1>Home</h1> */}
       {/* {testData && testData} */}
-      <Header as='h1' textAlign='center'>Devise Auth App</Header>
+      <Header as='h1' textAlign='center' style={{color: 'white', fontSize: '15em'}}>Real Estate App</Header>
       {user && 
       
       <Card header={`Welcome ${user.name}!`}>
