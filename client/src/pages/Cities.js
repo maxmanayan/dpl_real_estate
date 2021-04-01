@@ -60,7 +60,7 @@ const Cities = () => {
   // if(properties === null) return <Loader type='clock' text='loading please wait...' color='slateblue'/>
   return(
     <div>
-      <Header as='h1' textAlign='center' style={{color: 'white'}}>Cities</Header>
+      <Header as='h1' textAlign='center' style={{color: 'white', fontSize: '5em'}}>Cities</Header>
       <span>
         <Dropdown
            onChange={handleChange}
