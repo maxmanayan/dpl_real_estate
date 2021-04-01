@@ -38,6 +38,8 @@ group :development, :test do
 
   gem 'better_errors'
 
+  gem 'kaminari'
+
 end
 
 group :development do
