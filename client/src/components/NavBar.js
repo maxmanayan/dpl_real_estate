@@ -54,6 +54,11 @@ const NavBar = (props) => {
           Cities
         </Menu.Item>
       </Link>
+      <Link to='/homes'>
+        <Menu.Item active={pathname == '/homes'}>
+          Find Homes
+        </Menu.Item>
+      </Link>
       {/* <Link to='/about'>
         <Menu.Item active={pathname == '/about'}>
           About

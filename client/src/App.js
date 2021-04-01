@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Available from './pages/Available';
 import Cities from './pages/Cities';
+import FindHomes from './pages/FindHomes';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route exact path='/componentDemo' component={ComponentDemo} /> */}
           <Route exact path='/available' component={Available} />
           <Route exact path='/cities' component={Cities} />
+          <Route exact path='/homes' component={FindHomes} />
           <Route component={NoMatch} />
         </Switch>
       </Container>

@@ -56,7 +56,7 @@ const Cities = () => {
   //   </span>
   // )
   
-  if(!cities) return <Loader type='clock' text='loading please wait...' color='slateblue'/>
+  if(!cities) return <Loader type='clock' text='loading please wait...' color='white'/>
   // if(properties === null) return <Loader type='clock' text='loading please wait...' color='slateblue'/>
   return(
     <div>
