@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 Agent.destroy_all
 Buyer.destroy_all
 Property.destroy_all
@@ -13,36 +14,34 @@ cities = [
   'Sandy',
   'Draper',
   'SLC',
-  # 'Orem',
-  # 'Provo',
-  # 'Ogden',
-  # 'Layton',
-  # 'Midvale',
-  # 'Murray'
+  'Orem',
+  'Provo',
+  'Ogden',
+  'Layton',
 ]
-10.times do
+  20.times do
   a = Agent.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.cell_phone
   )
-  5.times do
-    num_cities = rand(0..cities.length - 1);
+  50.times do
+    num_cities = rand(1..cities.length - 1);
     Buyer.create(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
       email: Faker::Internet.email,
       # phone: Faker::PhoneNumber.cell_phone,
       max_price: rand(99000..1500000),
-      #TODO num_cities is sometimes zero, so we get null value in database
+       # TODO Num cities is 0 sometimes so buyer has no deseried cities
       cities: cities.sample(num_cities),
       agent_id: a.id
     )
   end
-  5.times do
-    #TODO this sold is deprecate... need to change
-    sold = Faker::Boolean.boolean(0.3)
+  50.times do
+    # TODO this is depracted change at sometime
+    sold = rand(10).odd? ? true: false
     price = rand(99000..1500000)
     percent_change = (-3..3).to_a.sample.to_f / 100
     sold_price = sold ? price * (1 + percent_change) : nil

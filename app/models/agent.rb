@@ -13,4 +13,16 @@ class Agent < ApplicationRecord
     .group('agents.id')
     .order('frequency DESC')
   end
+
+  # get list of agents buyers
+  # SELECT * 
+  # FROM buyers
+  # WHERE buyers.agent_id = 2;
+
+
+  def self.get_buyers(agent_id)
+    select('*')
+    .from('buyers')
+    .where('buyers.agent_id = ?', agent_id)
+  end
 end
