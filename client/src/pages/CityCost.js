@@ -14,19 +14,45 @@ const CityCost = () => {
   const getCosts = async () => {
     try {
       let res = await axios.get('/api/properties/city_cost')
-      setCosts(res.data)
+      let normalizedData = normalizeData(res.data)
+      console.log(normalizedData)
+      setCosts(normalizedData)
     } catch (error) {
       console.log(error)
     }
+  }
+
+  // const getAvgCost = (data) => {
+  //   return data.split(', ').reduce((acc, num) => {
+  //     acc += parseInt(num)
+  //     return acc
+  //   }, 0)
+  // }
+
+  const normalizeData = (data) => {
+    console.log('in normalizeData', data)
+    return data.map( d=> {
+      let numArr = d.prices.split(', ')
+      let total = numArr.reduce((acc, num) => {
+        acc += parseInt(num)
+        return acc
+      }, 0)
+      return {
+        name: d.city,
+        price: total / d.prices.length
+      }
+    })
   }
   return(
     <>
     <Header as='h1' textAlign='center' style={{color: 'white', fontSize: '5em'}}>City Cost</Header>
       {/* <ResponsiveContainer width="100%" height="100%"> */}
+      <div style={{display: 'flex', justifyContent: 'center',}}>
         <BarChart
+          className='barChart'
           width={500}
           height={300}
-          data={data}
+          data={costs}
           margin={{
             top: 5,
             right: 30,
@@ -39,12 +65,13 @@ const CityCost = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="price" fill="#8884d8" />
+          <Bar dataKey="price" fill="gray" />
           {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
         </BarChart>
+      </div>
       {/* </ResponsiveContainer> */}
-      <h1>Below Chart</h1>
-      {costs && <pre>{JSON.stringify(costs, null, 2)}</pre>}
+      {/* <h1>Below Chart</h1>
+      {costs ? <pre>{JSON.stringify(costs, null, 2)}</pre> : 'costs not set'} */}
       </>
   )
 }
