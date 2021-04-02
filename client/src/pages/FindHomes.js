@@ -120,7 +120,7 @@ const FindHomes = () => {
           {renderProperties()}
         </Card.Group>
       }
-      {properties === null ? <Loader type='bounce' text='please select an agent and buyer' color='white'/> : <pre>{JSON.stringify(properties, null, 2)}</pre>}
+      {/* {properties === null ? <Loader type='bounce' text='please select an agent and buyer' color='white'/> : <pre>{JSON.stringify(properties, null, 2)}</pre>} */}
     </div>
   )
 }

@@ -59,7 +59,14 @@ const Available = (props) => {
   const renderPageNav = () => {
     let numsJSX = []
     for(let i = 1; i <= totalPages; i++){
-      numsJSX.push(<span onClick={()=>getData(i)} textAlign='center' style={{marginRight: '2em', color: currentPage == i ? 'blue' : 'gray'}}>{i}</span>)
+      numsJSX.push(
+        <span 
+          onClick={()=>getData(i)} 
+          textAlign='center' 
+          style={{color: currentPage == i ? 'blue' : 'gray'}}>
+            {i}
+        </span>
+      )
     }
     return numsJSX
   }
@@ -71,11 +78,13 @@ const Available = (props) => {
     return properties.map(agent => {
         return (
             <List.Item>
-              <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
-              <List.Content>
+              {/* <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' /> */}
+              {/* <List.Content style={{color: 'gray'}}>
                 <List.Header>{agent.name}</List.Header>
                 {agent.email}
-              </List.Content>
+              </List.Content> */}
+
+              <Header as='h4' textAlign='center' style={{color: 'dimgray', fontSize: '2em'}}>{agent.name}-{agent.email} </Header>
 
               <Table singleLine>
                 <Table.Header>
@@ -110,9 +119,11 @@ const Available = (props) => {
   return(
     <div>
        <Header as='h1' textAlign='center' style={{color: 'white', fontSize: '5em'}}>Available</Header>
-       {renderPageNav()}
-       {/* <pre>{JSON.stringify(properties, null, 2)}</pre> */}
+       <div style={{display: 'flex', justifyContent: 'space-between', paddingBottom: '2em'}}>
+        {renderPageNav()}
+       </div>
        {renderProperties()}
+       {/* <pre>{JSON.stringify(properties, null, 2)}</pre> */}
     </div>
   )
 }
