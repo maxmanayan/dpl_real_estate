@@ -10,7 +10,7 @@ const Available = (props) => {
   const [currentPage, setCurrentPage] =  useState(1)
   const [totalPages, setTotalPages] =  useState(null)
   useEffect(()=>{
-    getData()
+    getData(1)
   },[])
 
   
@@ -46,10 +46,10 @@ const Available = (props) => {
     try {
       let res = await axios.get(`/api/properties?page=${page}`)
       setCurrentPage(page)
-      console.log(res.data)
+      // console.log(res.data)
       setTotalPages(res.data.total_pages)
       let normalizedAgentData = normalizeAgentData(res.data.properties)
-      console.log(normalizedAgentData)
+      // console.log(normalizedAgentData)
       setProperties(normalizedAgentData)
     } catch (err) {
       console.log(err)

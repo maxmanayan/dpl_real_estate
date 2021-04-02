@@ -1,5 +1,7 @@
 class Api::PropertiesController < ApplicationController
 
+  before_action :set_page
+
   def index 
     properties = Property.page(@page).available
     render json: {properties: properties, total_pages: properties.total_pages }

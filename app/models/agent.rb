@@ -10,6 +10,7 @@ class Agent < ApplicationRecord
   def self.by_property_count 
     select('agents.id, first_name, last_name, email, COUNT(*) AS frequency')
     .joins('INNER JOIN properties AS p ON p.agent_id = agents.id')
+    .where('sold <> true')
     .group('agents.id')
     .order('frequency DESC')
   end
