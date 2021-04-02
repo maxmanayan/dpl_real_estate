@@ -75,12 +75,12 @@ const FindHomes = () => {
         <Card
         image='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/o9uzuska-1576700104.jpg?crop=1.00xw:0.753xh;0,0.0513xh&resize=980:*'
         header={property.street}
-        meta={property.price}
-        description={`Beds: ${property.beds} Baths:${property.baths} sq feet: ${property.sq_ft}`}
+        meta={`$${property.price}`}
+        description={`Square Footage: ${property.sq_ft} sqft`}
         extra={(
             <a>
-              <Icon name='bed' />
-              {property.beds}
+              <Icon name='compass' />
+              {property.city}
             </a>
 
           )}
@@ -120,7 +120,7 @@ const FindHomes = () => {
           {renderProperties()}
         </Card.Group>
       }
-      {/* {properties === null ? <Loader type='bounce' text='please select an agent and buyer' color='white'/> : <pre>{JSON.stringify(properties, null, 2)}</pre>} */}
+      {properties === null ? <Loader type='bounce' text='please select an agent and buyer' color='white'/> : <pre>{JSON.stringify(properties, null, 2)}</pre>}
     </div>
   )
 }
