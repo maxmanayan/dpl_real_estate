@@ -28,7 +28,7 @@ const Home = () => {
     }
   }
 
-  if(loading) return <Loader type='clock' text='loading please wait'/>
+  if(loading) return <Loader type='clock' text='loading please wait' color='white'/>
   return(
     <div>
       {/* <h1>Home</h1> */}
