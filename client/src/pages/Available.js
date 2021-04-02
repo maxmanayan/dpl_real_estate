@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Header } from "semantic-ui-react";
+import { Header, Image, List, Table } from "semantic-ui-react";
 import Loader from "../components/Loader";
 import Card from "../components/Card";
 
@@ -67,14 +67,52 @@ const Available = (props) => {
   //   const { beds, baths, sq_ft, price, sold, email, agent_id, first_name, last_name, city } = dummyData[9]
   //   // console.log(beds, city)
   // }
+  const renderProperties = () => {
+    return properties.map(agent => {
+        return (
+            <List.Item>
+              <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
+              <List.Content>
+                <List.Header>{agent.name}</List.Header>
+                {agent.email}
+              </List.Content>
+
+              <Table singleLine>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>beds</Table.HeaderCell>
+                    <Table.HeaderCell>baths </Table.HeaderCell>
+                    <Table.HeaderCell>sq_ft</Table.HeaderCell>
+                    <Table.HeaderCell>price</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  {agent.properties.map((property) => (
+                    <Table.Row>
+                      <Table.Cell>{property.beds}</Table.Cell>
+                      <Table.Cell>{property.baths}</Table.Cell>
+                      <Table.Cell>{property.sq_ft}</Table.Cell>
+                      <Table.Cell>{property.price}</Table.Cell>
+
+                    </Table.Row>
+                  ))}
+
+                </Table.Body>
+              </Table>
+            </List.Item>
+
+        )
+    })
+}
 
   if(!properties) return <Loader type='clock' text='loading please wait...' color='white'/>
   return(
     <div>
        <Header as='h1' textAlign='center' style={{color: 'white', fontSize: '5em'}}>Available</Header>
        {renderPageNav()}
-       <pre>{JSON.stringify(properties, null, 2)}</pre>
-       {/* {renderProperties()} */}
+       {/* <pre>{JSON.stringify(properties, null, 2)}</pre> */}
+       {renderProperties()}
     </div>
   )
 }

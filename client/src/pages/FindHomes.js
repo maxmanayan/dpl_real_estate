@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Dropdown, Header } from "semantic-ui-react";
+import { Card, Dropdown, Header, Icon } from "semantic-ui-react";
 import Loader from "../components/Loader";
 
 
@@ -69,6 +69,26 @@ const FindHomes = () => {
     }
   }
 
+  const renderProperties = () => {
+    return properties.map( property => {
+      return(
+        <Card
+        image='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/o9uzuska-1576700104.jpg?crop=1.00xw:0.753xh;0,0.0513xh&resize=980:*'
+        header={property.street}
+        meta={property.price}
+        description={`Beds: ${property.beds} Baths:${property.baths} sq feet: ${property.sq_ft}`}
+        extra={(
+            <a>
+              <Icon name='bed' />
+              {property.beds}
+            </a>
+
+          )}
+        />
+      )
+    })
+  }
+
   // if(!agents) return <Loader type='clock' text='loading please wait...' color='white'/>
   return(
     <div>
@@ -93,7 +113,14 @@ const FindHomes = () => {
         />
       </span>
       <br />
-      {properties === null ? <Loader type='bounce' text='please select an agent and buyer' color='white'/> : <pre>{JSON.stringify(properties, null, 2)}</pre>}
+      {properties === null ? 
+        <Loader type='bounce' text='please select an agent and buyer' color='white'/> 
+        : 
+        <Card.Group style={{marginTop:'20px', paddingLeft: '10%', paddingRight: '10%'}}>
+          {renderProperties()}
+        </Card.Group>
+      }
+      {/* {properties === null ? <Loader type='bounce' text='please select an agent and buyer' color='white'/> : <pre>{JSON.stringify(properties, null, 2)}</pre>} */}
     </div>
   )
 }
