@@ -59,9 +59,9 @@ const NavBar = (props) => {
           Find Homes
         </Menu.Item>
       </Link>
-      <Link to='/price'>
-        <Menu.Item active={pathname == '/price'}>
-          City Price
+      <Link to='/cityCost'>
+        <Menu.Item active={pathname == '/cityCost'}>
+          City Cost
         </Menu.Item>
       </Link>
       {/* <Link to='/about'>
