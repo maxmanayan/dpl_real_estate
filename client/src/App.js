@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Available from './pages/Available';
 import Cities from './pages/Cities';
 import FindHomes from './pages/FindHomes';
+import CityPrice from './pages/CityPrice';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route exact path='/available' component={Available} />
           <Route exact path='/cities' component={Cities} />
           <Route exact path='/homes' component={FindHomes} />
+          <Route exact path='/price' component={CityPrice} />
           <Route component={NoMatch} />
         </Switch>
       </Container>
