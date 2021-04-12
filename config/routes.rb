@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     
     get "buyers/:id", to: "buyers#show"
   end
+
+  get '*other', to: 'static#index'
 end
